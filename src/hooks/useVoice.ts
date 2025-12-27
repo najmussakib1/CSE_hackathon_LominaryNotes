@@ -88,14 +88,18 @@ export default function useVoice() {
             };
 
             recognitionRef.current.onerror = (event: any) => {
-                console.error('Speech recognition error', event.error);
                 if (event.error === 'no-speech') {
-                    // If no speech detected, just resolve empty or retry?
-                    // Let's resolve empty so the loop can decide.
+                    // No speech detected, resolve empty
                     resolve('');
                 } else if (event.error === 'aborted') {
-                    // resolved elsewhere or silent fail
+                    // Recognition was intentionally stopped
+                    reject('aborted');
+                } else if (event.error === 'audio-capture') {
+                    const errorMsg = 'Microphone capture failed. Please ensure your microphone is connected and you have granted permission.';
+                    setState(prev => ({ ...prev, isListening: false, error: errorMsg }));
+                    reject(event.error);
                 } else {
+                    console.error('Speech recognition error', event.error);
                     setState(prev => ({ ...prev, isListening: false, error: `Speech recognition error: ${event.error}` }));
                     reject(event.error);
                 }

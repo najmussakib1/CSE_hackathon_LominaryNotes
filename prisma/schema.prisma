@@ -16,6 +16,19 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  messages      Message[]
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  courseId  String
+  createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([courseId])
+  @@index([createdAt])
 }
 
 model Account {

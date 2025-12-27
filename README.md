@@ -1,4 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LoominaryNotes
+
+## Overview
+LoominaryNotes is an AI-powered study companion designed to alleviate exam stress. Before exams, students often panic when faced with a mountain of course PDFs. Our platform solves this by summarizing course materials, providing interactive AI assistance, and connecting students for collaborative learning.
+
+## Key Features
+
+- **📄 Smart PDF Summarization**
+  - Our AI analyzes course PDFs and generates comprehensive summaries, giving students a complete overview of the material without the overwhelm.
+
+- **🤖 Interactive Q&A**
+  - Engage in a dynamic Q&A session with AI that enhances your preparation by quizzing you and explaining concepts.
+
+- **💡 Doubt Solving**
+  - A dedicated section for solving specific queries. students can ask questions and get instant, accurate answers.
+
+- **⚠️ Pitfall Analysis**
+  - The AI analyzes common mistakes and highlights pitfalls, helping students identify and avoid errors they are likely to make.
+
+- **💬 Student Community**
+  - A chat section that connects students on a single platform, enabling group study and peer-to-peer learning.
+
+- **🔐 Authentication & Interactive UI**
+  - Secure authentication system and a highly interactive, modern user interface for a seamless study experience.
 
 ## Getting Started
 
@@ -15,19 +38,6 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
