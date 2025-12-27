@@ -280,7 +280,7 @@ export default function Home() {
           </AnimatePresence>
         </div>
       </div>
-      <footer className="py-8 text-center text-gray-600 text-sm border-t border-white/5 bg-transparent relative z-10">&copy; 2025 Loominary AI • Built for Hackathon IEEE</footer>
+      <footer className="py-8 text-center text-gray-600 text-sm border-t border-white/5 bg-transparent relative z-10">&copy; 2025 Loominary AI • Built for Hackathon</footer>
     </main>
   );
 }

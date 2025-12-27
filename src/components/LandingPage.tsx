@@ -286,7 +286,7 @@ export default function LandingPage() {
                 </section>
 
                 <footer className="py-12 border-t border-white/5 text-center text-gray-500 text-sm bg-black/40">
-                    <p>&copy; 2025 Loominary Notes • Built by Najmus Sakib for IEEE Hackathon</p>
+                    <p>&copy; 2025 Loominary AI • Built for Hackathon</p>
                     <div className="flex justify-center gap-6 mt-4">
                         <a href="#" className="hover:text-white transition-colors">Privacy</a>
                         <a href="#" className="hover:text-white transition-colors">Terms</a>
