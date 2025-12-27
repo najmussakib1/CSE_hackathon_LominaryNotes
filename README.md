@@ -26,6 +26,17 @@ LoominaryNotes is an AI-powered study companion designed to alleviate exam stres
 - **🔐 Authentication & Interactive UI**
   - Secure authentication system and a highly interactive, modern user interface for a seamless study experience.
 
+## Technologies Used
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (React 19)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/), [Framer Motion](https://www.framer.com/motion/)
+- **Database:** [Prisma](https://www.prisma.io/) (SQLite for Dev)
+- **Authentication:** [NextAuth.js](https://authjs.dev/)
+- **3D Graphics:** [React Three Fiber](https://docs.pmnd.rs/react-three-fiber), [Three.js](https://threejs.org/)
+- **AI & ML:** [Groq SDK](https://console.groq.com/docs/libraries), [Vapi](https://vapi.ai/) (Voice AI)
+- **Utilities:** [Lucide React](https://lucide.dev/), [date-fns](https://date-fns.org/), [pdf-parse](https://www.npmjs.com/package/pdf-parse)
+
 ## Getting Started
 
 First, run the development server:
