@@ -17,6 +17,9 @@ LoominaryNotes is an AI-powered study companion designed to alleviate exam stres
 - **⚠️ Pitfall Analysis**
   - The AI analyzes common mistakes and highlights pitfalls, helping students identify and avoid errors they are likely to make.
 
+- **🎯 Smart Course Recommendations**
+  - Personalized course suggestions for logged-in users based on their performance and mistakes, ensuring targeted improvement.
+
 - **💬 Student Community**
   - A chat section that connects students on a single platform, enabling group study and peer-to-peer learning.
 
