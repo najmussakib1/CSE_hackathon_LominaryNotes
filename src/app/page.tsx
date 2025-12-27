@@ -1,13 +1,15 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { useSession, signOut } from 'next-auth/react';
 import UploadSection from '@/components/UploadSection';
 import AnalysisResults from '@/components/AnalysisResults';
+import BackgroundAnimation from '@/components/BackgroundAnimation';
 import useVoice from '@/hooks/useVoice';
 import {
   Sparkles, Library, Mic, MicOff, X, AlertTriangle,
   Loader2, CheckCircle2, BookOpen, Calculator,
-  Cpu, Zap, ArrowLeft, Plus, Trash2
+  Cpu, Zap, ArrowLeft, Plus, Trash2, LogOut, User as UserIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -19,6 +21,7 @@ const COURSES = [
 ];
 
 export default function Home() {
+  const { data: session } = useSession();
   const [selectedCourse, setSelectedCourse] = useState<string | null>(null);
   const [analysis, setAnalysis] = useState<any>(null);
   const [isQuizActive, setIsQuizActive] = useState(false);
@@ -199,7 +202,8 @@ export default function Home() {
   const selectedCourseData = COURSES.find(c => c.id === selectedCourse);
 
   return (
-    <main className="flex min-h-screen flex-col bg-gray-950 text-white selection:bg-indigo-500/30">
+    <main className="relative min-h-screen flex flex-col bg-gray-950 text-white selection:bg-indigo-500/30 overflow-hidden">
+      <BackgroundAnimation />
       {/* Quiz Overlay */}
       {isQuizActive && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-gray-950/90 backdrop-blur-xl animate-in fade-in duration-300">
@@ -330,28 +334,57 @@ export default function Home() {
 
       {/* Header */}
       <header className="flex items-center justify-between px-8 py-6 bg-gray-900/50 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
-        <div className="flex items-center gap-2">
-          <div className="p-2 bg-indigo-600 rounded-lg cursor-pointer" onClick={() => setSelectedCourse(null)}>
-            <Library className="w-5 h-5 text-white" />
-          </div>
-          <h1 className="text-xl font-bold tracking-tight">
-            Loominary <span className="text-indigo-400">Notes</span>
-          </h1>
-        </div>
-        {selectedCourse && (
-          <div className="flex items-center gap-4">
-            <div className={`px-4 py-1.5 rounded-full ${selectedCourseData?.color} bg-opacity-10 border border-white/10 text-sm font-semibold flex items-center gap-2`}>
-              {selectedCourseData && <selectedCourseData.icon className="w-4 h-4 text-indigo-400" />}
-              {selectedCourse}
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2 cursor-pointer group" onClick={() => setSelectedCourse(null)}>
+            <div className="p-2 bg-indigo-600 rounded-lg group-hover:scale-110 transition-transform">
+              <Library className="w-5 h-5 text-white" />
             </div>
+            <h1 className="text-xl font-bold tracking-tight">
+              Loominary <span className="text-indigo-400">Notes</span>
+            </h1>
+          </div>
+
+          {selectedCourse && (
+            <div className="hidden md:flex items-center gap-4 animate-in fade-in slide-in-from-left-4 duration-500">
+              <div className="w-px h-6 bg-white/10" />
+              <div className={`px-4 py-1.5 rounded-full ${selectedCourseData?.color} bg-opacity-10 border border-white/10 text-sm font-semibold flex items-center gap-2`}>
+                {selectedCourseData && <selectedCourseData.icon className="w-4 h-4 text-indigo-400" />}
+                {selectedCourse}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center gap-6">
+          {session?.user && (
+            <div className="flex items-center gap-4 bg-white/5 pl-2 pr-4 py-1.5 rounded-2xl border border-white/10">
+              <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+                <UserIcon className="w-4 h-4" />
+              </div>
+              <div className="hidden sm:block">
+                <p className="text-xs text-gray-400 font-medium leading-none mb-1">Authenticated</p>
+                <p className="text-sm font-bold text-white leading-none">{session.user.name || session.user.email}</p>
+              </div>
+              <button
+                onClick={() => signOut()}
+                className="ml-2 p-2 rounded-lg text-gray-500 hover:text-red-400 hover:bg-red-400/10 transition-all"
+                title="Logout"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+
+          {selectedCourse && (
             <button
               onClick={() => setSelectedCourse(null)}
-              className="p-1 px-3 text-xs font-semibold text-gray-500 hover:text-white transition-colors"
+              className="flex items-center gap-2 px-6 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold border border-white/10 transition-all active:scale-[0.98]"
             >
-              Back to Courses
+              <ArrowLeft className="w-4 h-4" />
+              Back
             </button>
-          </div>
-        )}
+          )}
+        </div>
       </header>
 
       <div className="flex-1 overflow-y-auto">
@@ -507,7 +540,7 @@ export default function Home() {
         </div>
       </div>
 
-      <footer className="py-8 text-center text-gray-600 text-sm border-t border-white/5 bg-gray-950">
+      <footer className="py-8 text-center text-gray-600 text-sm border-t border-white/5 bg-transparent relative z-10">
         &copy; 2025 Loominary AI • Built for Hackathon IEEE
       </footer>
     </main>

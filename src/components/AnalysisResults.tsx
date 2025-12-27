@@ -93,7 +93,7 @@ export default function AnalysisResults({ data, onReset, onStartQuiz, onStartDou
                                     <button
                                         onClick={(e) => {
                                             e.stopPropagation();
-                                            if (confirm(`Are you sure you want to remove "${doc.fileName}"?`)) {
+                                            if (confirm(`Are you sure you want to remove \"${doc.fileName}\"?`)) {
                                                 onRemoveDoc?.(doc.fileName);
                                             }
                                         }}
