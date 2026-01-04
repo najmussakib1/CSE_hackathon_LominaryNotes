@@ -62,5 +62,3 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Developers
 
 - **Najmus Sakib** - [GitHub](https://github.com/najmussakib1)
-- **Jubayer Talukder**
-- **Sumit Das Gupta**
